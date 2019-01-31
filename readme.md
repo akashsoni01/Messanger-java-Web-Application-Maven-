@@ -1,3 +1,95 @@
+6:05 PM
+https://www.geeksforgeeks.org/java-net-uri-class-java/
+
+Java.net.URI class in Java - GeeksforGeeks
+https://www.geeksforgeeks.org
+
+
+6:23 PM
+
+REST Resource Identifier (URI) Naming – REST API Tutorial
+https://restfulapi.net
+6:28 PM
+create -> post
+put -> update
+delete ->. delete
+collection uri for many data
+e.g : post - msg/10/comments
+create a new comment for ten messages
+CRUD
+
+7:12 PM
+
+List of HTTP status codes
+https://en.wikipedia.org
+8:52 PM
+Steps
+
+Open Eclipse
+Choose New > Project > Maven Project
+Choose Add Archetype and enter the following details:
+Archetype Group ID: org.glassfish.jersey.archetypes
+Archetype Artifact ID: jersey-quickstart-webapp
+Archetype Version: 2.16 [enter the latest version that is available]
+Choose the newly entered archetype from the Archetype selection screen
+Enter your project details - Group ID, Artifact ID and Version.
+More Information: https://javabrains.io/courses/javaee_jaxrs/lessons/Setting-Up
+
+Setting Up | Developing REST APIs with JAX-RS | Java Brains
+https://javabrains.io
+
+9:17 PM
+
+How to install maven to mac using terminal without using brew
+https://stackoverflow.com
+
+
+An internal error occurred during: "Updating Maven Project
+https://stackoverflow.com
+
+9:41 PM
+
+https://start.spring.io
+https://start.spring.io
+
+
+Spring Projects
+http://spring.io
+
+
+Jersey hello world example – Mkyong.com
+https://www.mkyong.com
+3:17 PM
+localhost:8080/RESTfulExample/hello/hey
+
+
+3:24 PM
+or go to server and debug run
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+		<finalName>RESTfulExample</finalName>
+@Path("/hello")
+3:46 PM
+prefixlen 64 secured scopeid 0x6 
+	inet 192.168.0.206 netmask
+Command for Terminal:
+ifconfig
+http://192.168.0.206:8080/RESTfulExample/hello/hey
+
+5:18 PM
+
+RESTful Web Service - JAX-RS Annotations
+http://www.techferry.com
+
+
+Hibernate Tutorial Part 1 - Introduction to Hibernate ( Concept) - YouTube
+https://www.youtube.com
+5:43 PM
+http://localhost:8080/Messanger/hello/hey
+http://192.168.0.206:8080/Messanger/hello/hey
+
 6:01 PM
 
 6:06 PM
@@ -45,175 +137,3 @@ public class MessageResources {
 
 
 eg: message/akash
-Map variable path
-
-@Path("/messages")
-public class MessageResources {
-	MessageService messageServices = new MessageService();
-	@GET
-	@Produces(MediaType.APPLICATION_XML)
-	public List<Message> getMessage(){
-		return messageServices.getAllMessages();
-	}
-	@GET
-	@Path("{messageId}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getName(){
-		return "akash soni";
-	}
-}
-11:32 AM
-Path params
-	@GET
-	@Path("{messageId}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getName(@PathParam("messageId") String messageId){
-		return messageId;
-	}
-for give parameters to methoods
-11:51 AM
-Add dependency in pom.xml for automatic conversion to json
-
-
-Maven Repository: org.json » json » 20090211
-https://mvnrepository.com
-
-12:09 PM
-
-Maven Repository: org.glassfish.jersey.media » jersey-media-moxy » 2.28
-https://mvnrepository.com
-1:34 PM
-correct dependency for json
-https://www.mkyong.com/webservices/jax-rs/json-example-with-jersey-jackson/
-
-JSON example with Jersey + Jackson – Mkyong.com
-https://www.mkyong.com
-3:43 PM
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Message addMessage(Message message){
-		return messageServices.addMessage(message);
-	}
-Don't forgot to change application/ type to json in POSTMAN
-7:05 PM
-Write consume and produce annotation for avoiding it from each methods
-@Path("/messages")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-public class MessageResources {
-	MessageService messageServices = new MessageService();
-	@GET
-	public List<Message> getMessage(@QueryParam("year") int year){
-		if(year>0){
-			return messageServices.getAllMessagesForYear(year);
-		}
-		return messageServices.getAllMessages();
-	}
-	
-}
-7:11 PM
-Code for Query params
-	@GET
-	public List<Message> getMessage(@QueryParam("year") int year){
-		if(year>0){
-			return messageServices.getAllMessagesForYear(year);
-		}
-		return messageServices.getAllMessages();
-	}
-e.g. http://localhost:8080/messanger/messages?year=2018
-
-
-
-Similarly for   http://localhost:8080/messanger/messages?year=2019&start=1&end=5
-Multi Query params
-	@GET
-	public List<Message> getMessage(@QueryParam("year") int year,
-									@QueryParam("start") int start,
-									@QueryParam("end") int end){
-		if(year>0){
-			return messageServices.getAllMessagesForYear(year);
-		}
-		
-		//write your logic for start and end id of messages
-		return messageServices.getAllMessages();
-	}
-8:27 PM
-Some other params
-@Path("/test")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-public class DemoTest {
-	@GET
-	@Path("annotation")
-	public String getMessage(
-			@MatrixParam("matrixParams") String matrixParams,
-			@HeaderParam("hadderParams") String hadderParams,
-			@CookieParam("cookiParams") String cookiParams
-							){
-		return "matrix="+matrixParams+"hadder = "+hadderParams+"cookie = "+cookiParams;
-	}
-}
-8:34 PM
-Here is how bean params class looks
-public class MessageFilterBean {
-	@QueryParam("year") int year;
-	@QueryParam("start") int start;
-	@QueryParam("end") int end;
-	public int getYear() {
-		return year;
-	}
-	public void setYear(int year) {
-		this.year = year;
-	}
-	public int getStart() {
-		return start;
-	}
-	public void setStart(int start) {
-		this.start = start;
-	}
-	public int getEnd() {
-		return end;
-	}
-	public void setEnd(int end) {
-		this.end = end;
-	}
-	
-	
-}
-12:18 PM
-	
-Sub params	
-@Path("/{messageId}/comments")
-	public CommentResource getCommentResource(@PathParam("messageId") long id){
-		return new CommentResource();
-	}
-
-
-
-
-///////////////////////?
-/setrole 
-@Path("/")
-public class CommentResource {
-	
-	@GET
-	public String getComment(){
-		return "comment resource test";
-	}
-	
-}
-
-
-For making class path and its own  params
-*we can add param form super resource class.
-*
-e.g.
-	@GET
-	@Path("/{commentId}")
-	public String test(@PathParam("messageId") long id,@PathParam("commentId") long commentId){
-		return "comment resource test"+id+"commentid = "+commentId;
-	}
-http://localhost:8080/messanger/messages/1/comments/1
-CONVERSATION MEMBERS:
-   live:akashsoni8285: Admin
